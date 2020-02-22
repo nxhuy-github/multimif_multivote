@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven />
+    <mvc:resources mapping="/icons/**" location="/icons/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <bean id="member" class="multimif.vote.modele.Member"/>
+    <bean id="vote" class="multimif.vote.modele.Vote"/>
+    <bean id="voteOption" class="multimif.vote.modele.VoteOption"/>
+    <bean id="voteType" class="multimif.vote.modele.VoteType"/>
+    <bean id="voice" class="multimif.vote.modele.Voice"/>
+    <bean id="majoritarianRepresentation" class="multimif.vote.modele.MajoritarianRepresentation"/>
+    <bean id="memberVote" class="multimif.vote.modele.MemberVote"/>
+    <bean id="voiceVoteOption" class="multimif.vote.modele.VoiceVoteOption"/>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <context:annotation-config/>
+    <context:component-scan base-package="multimif.vote"/>
+</beans>

@@ -1,0 +1,11 @@
+
+print "start executing sql constraints"
+
+execute sql file "@prefix/constraints/Member.sql"
+execute sql file "@prefix/constraints/VoteType.sql"
+execute sql file "@prefix/constraints/Vote.sql"
+execute sql file "@prefix/constraints/VoteOption.sql"
+execute sql file "@prefix/constraints/MemberVote.sql"
+execute sql file "@prefix/constraints/Voice.sql"
+execute sql file "@prefix/constraints/VoiceVoteOption.sql"
+execute sql file "@prefix/constraints/MajoritarianRepresentation.sql"

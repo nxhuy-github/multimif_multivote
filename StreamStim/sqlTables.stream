@@ -1,0 +1,11 @@
+
+print "start executing sql tables"
+
+execute sql file "@prefix/tables/Member.sql"
+execute sql file "@prefix/tables/VoteType.sql"
+execute sql file "@prefix/tables/Vote.sql"
+execute sql file "@prefix/tables/VoteOption.sql"
+execute sql file "@prefix/tables/MemberVote.sql"
+execute sql file "@prefix/tables/Voice.sql"
+execute sql file "@prefix/tables/VoiceVoteOption.sql"
+execute sql file "@prefix/tables/MajoritarianRepresentation.sql"

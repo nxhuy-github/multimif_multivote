@@ -1,0 +1,8 @@
+
+print "start executing sql data"
+
+#execute sql file "@prefix/data/Member.sql"
+#print "TODO : POPULATE sqlData.stream"
+execute sql file "@prefix/data/RoleMember.sql"
+execute sql file "@prefix/data/Member.sql"
+execute sql file "@prefix/data/VoteType.sql"

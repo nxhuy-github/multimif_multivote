@@ -1,0 +1,76 @@
+#before_script:
+#  - bundle install
+#
+#after_script:
+#  - rm secrets
+#
+stages:
+  - build
+  - test
+  - package
+  - deploy
+
+compile_java:
+  stage: build
+  script:
+    - mvn compile
+  tags:
+    - build
+
+# init_DB:
+  # stage: build
+  # script:
+    # - ruby ./src/main/sql/ruby/sqlTest.rb
+  # tags:
+    # - build
+
+unit_tests:
+  stage: test
+  script:
+    - mvn test
+  tags:
+    - test 
+
+# sql_tests:
+  # stage: test
+  # script:
+    # - ruby ./src/main/sql/ruby/sqlTests.rb
+  # only:
+    # - master
+  # tags:
+    # - test
+
+packaging_application:
+  stage: package
+  only:
+    - master
+    - spring
+  script:
+    - mvn install
+    - mv target/vote-1.0-SNAPSHOT.war /var/www/html/MultiMIF/ROOT.war
+  tags:
+    - package 
+
+deployment_application:
+  stage: deploy
+  only:
+    - master
+    - spring
+  script:
+    - cd /var/lib/tomcat8/webapps
+    - rm ROOT.*
+    - wget http://89.93.214.121/MultiMIF/ROOT.war
+  tags:
+    - deploy
+
+deployment_database:
+  stage: deploy
+  only:
+    - sqlSchema
+  script:
+    - java -jar streamstim-1.0.jar -f StreamStim/install.strream
+    - cd /var/lib/tomcat8/webapps
+    - rm ROOT.*
+    - cp maintenance.war ROOT.war
+  tags:
+    - deploy

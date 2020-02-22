@@ -1,0 +1,31 @@
+# This is a comment =D
+
+# STREAM FILE
+# This file is called when database must be deployed (for production purpose)
+# How to trigger it:
+#	java -jar StreamStim/streamstim-1.0.jar -f StreamStim/test.stream
+
+# define a prefix to easely locate sql files
+@prefix = "/home/daratrix/Documents/MULTIMIF_F_Vote/src/main/sql"
+print "TODO : change the prefix !"
+
+# We open a SQL connection to the H2 database.
+# !!! Check the infos (driver, connection, username, password)
+# !!! password can be (and should be) an environment variable
+open sql connection "org.h2.Driver" "jdbc:h2:~/test3" "test" "test" #comment
+print "TODO : correct test database identifiers !"
+
+# We may want to clear the database before creating the tables.
+
+# We call the script to create the tables
+call stream file "StreamStim/sqlTables.stream" 
+
+# We call the script to add the constraints
+call stream file "StreamStim/sqlConstraints.stream"
+
+# We call the script to add the test data
+call stream file "StreamStim/sqlTest.stream"
+
+# We close the SQL connection
+close sql connection # comment
+

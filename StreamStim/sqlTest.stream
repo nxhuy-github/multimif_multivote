@@ -1,0 +1,9 @@
+
+print "start executing sql test"
+
+execute sql file "@prefix/test/RoleMember.sql"
+execute sql file "@prefix/test/Member.sql"
+execute sql file "@prefix/test/VoteType.sql"
+execute sql file "@prefix/test/Vote.sql"
+execute sql file "@prefix/test/VoteOption.sql"
+execute sql file "@prefix/test/VoiceVoteOption.sql"
